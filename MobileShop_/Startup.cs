@@ -28,8 +28,10 @@ namespace MobileShop_
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+			services.AddDbContext<MobileContext>(options =>
+							options.UseSqlServer(Configuration.GetConnectionString("OurCS")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+			services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -61,7 +63,7 @@ namespace MobileShop_
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=UserProfiles}/{action=checklogin}/{id?}");
             });
         }
     }

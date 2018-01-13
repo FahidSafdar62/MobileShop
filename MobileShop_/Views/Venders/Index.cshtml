@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MobileShop_.Models.Vender>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Vmobile)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vmobile)
+            </td>
+            <td>
+				<a asp-action="Edit" asp-route-id="@item.Vid" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-eye-open"></span>Edit</a> |
+				<a asp-action="Details" asp-route-id="@item.Vid" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-briefcase"></span>Details</a> |
+				<a asp-action="Delete" asp-route-id="@item.Vid" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-erase"></span>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts{ 
+<script>
+
+		$(document).ready(function () {
+			$('#table').DataTable();
+		});
+</script>
+}

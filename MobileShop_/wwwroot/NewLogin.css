@@ -1,0 +1,73 @@
+﻿body {
+    margin : 0px;
+    padding : 0px;
+    background : url('images/office-620817.jpg');
+    background-size : cover;
+    background-position : center;
+    font-family : sans-serif;
+}
+.login-box{
+    width : 400px;
+    height : 400px;
+    background: rgba(0 , 0 , 0, 0.5);
+    color:#fff;
+    top:50%;
+    left:40%;
+    position:absolute;
+    transform:translate(-50px , -50px);
+    box-sizing:border-box;
+    padding:70px 30px;
+}
+.Myglipicon{
+    height:100px;
+    width:100px;
+    border-radius:50%;
+    position:absolute;
+    top:-50px;
+    left:calc(50% - 50px);
+    
+}
+h1
+{
+    margin:0;
+    padding: 0 0 20px;
+    text-align:center;
+    font-size:22px;
+}
+.login-box p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.login-box input{
+    width:100%;
+    margin-bottom:20px;
+}
+.login-box input[type="text"], input[type="password"] {
+        border: none;
+        border-bottom: 1px solid #e6c31d;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #e6c31d;
+        font-size:20px;
+}
+.login-box input[type="submit"] {
+        border: none;
+        outline: none;
+        height: 40px;
+        background: #1e67db;
+        color: #e6c31d;
+        font-size: 14px;
+        border-radius: 20px;
+    }
+.login-box input[type="submit"]:hover {
+            cursor: pointer;
+            background: #e6c31d;
+            color:  #f8f8f8;
+        }
+.login-box a{
+    color:aqua;
+    text-decoration:wavy;   
+    font-size:14px;
+}

@@ -5,3 +5,8 @@
 <h3>@ViewData["Message"]</h3>
 
 <p>Use this area to provide additional information.</p>
+@section Scripts {
+	<script type="text/javascript">
+function add_chatinline() { var hccid = 92588902; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }
+	add_chatinline(); </script>
+}

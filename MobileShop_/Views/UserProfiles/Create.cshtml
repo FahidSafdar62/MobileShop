@@ -1,0 +1,67 @@
+﻿@model MobileShop_.Models.UserProfile
+
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+	<link href="~/light-bootstrap-dashboard-master/assets/css/animate.min.css" rel="stylesheet" />
+	<link href="~/light-bootstrap-dashboard-master/assets/css/demo.css" rel="stylesheet" />
+	<link href="~/light-bootstrap-dashboard-master/assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+	<link href="~/light-bootstrap-dashboard-master/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+  
+    <title>Register</title>
+</head>
+<body style="background-image:url(../../wwwroot/images/nexa-mob.png)" id="img">
+	
+	<style>
+		#img
+		{
+			display:block
+				
+		}
+	</style>
+	<h2>Sign Up</h2>
+
+<hr />
+<div class="row">
+	<div class="form-horizontal">
+		<div class="col-md-4" style="visibility: visible; animation-name: fadeIn;">
+			<img src=~/images/nexa-mob.png class="img-responsive col-lg-8" alt="">
+		</div>
+		<div class="col-md-7 col-sm-7 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+			<div class=" col-lg-6">
+				<form asp-action="Create">
+					<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+					<div class="form-group">
+						<label asp-for="UserName" class="control-label" ></label>
+						<input asp-for="UserName" required class="form-control" />
+						<span asp-validation-for="UserName" class="text-danger"></span>
+					</div>
+					<div class="form-group">
+						<label asp-for="Password" class="control-label"></label>
+						<input asp-for="Password" required class="form-control" />
+						<span asp-validation-for="Password" class="text-danger"></span>
+					</div>
+					
+					<div class="form-group">
+						<input type="submit" value="SignUp" class="btn btn-primary btn-block btn-lg"  />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+</body>
+</html>

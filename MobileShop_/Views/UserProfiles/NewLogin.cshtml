@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+
+	<link href="~/NewLogin.css" rel="stylesheet" />
+	<title>NewLogin</title>
+</head>
+<body>
+	<div class="login-box embed-responsive">
+		<img src="~/slidere/img/background-3048816_1280.jpg" class="Myglipicon responsive img-responsive" />
+		<h1>Login Here</h1>
+		<form class="form form-group embed-responsive" action="/UserProfiles/NewLoginByFahid">
+			<p>User Name:-</p>
+			<input type="text" placeholder="enter user name" name="username" />
+			<p>Password</p>
+			<input type="password" placeholder="enter password" name="password" />
+			<input type="submit" value="Login" name="submit" />
+			<a href="#">Forget Your Password</a>
+		</form>
+	</div>
+</body>
+</html>
+

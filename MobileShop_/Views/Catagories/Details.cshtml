@@ -1,0 +1,29 @@
+﻿@model MobileShop_.Models.Catagory
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Catagory</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CatagoryName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CatagoryName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.CatagoryId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+@section Scripts {
+	<script type="text/javascript">
+function add_chatinline() { var hccid = 92588902; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }
+	add_chatinline(); </script>
+}

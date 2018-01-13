@@ -1,0 +1,65 @@
+﻿@model MobileShop_.Models.Purchase
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Purchase</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PurchaseId" />
+            <div class="form-group">
+                <label asp-for="VenderId" class="control-label"></label>
+                <select asp-for="VenderId" class="form-control" asp-items="ViewBag.VenderId"></select>
+                <span asp-validation-for="VenderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ItemsId" class="control-label"></label>
+                <select asp-for="ItemsId" class="form-control" asp-items="ViewBag.ItemsId"></select>
+                <span asp-validation-for="ItemsId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pquanity" class="control-label"></label>
+                <input asp-for="Pquanity" class="form-control" />
+                <span asp-validation-for="Pquanity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PricePerUnit" class="control-label"></label>
+                <input asp-for="PricePerUnit" class="form-control" />
+                <span asp-validation-for="PricePerUnit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalPrice" class="control-label"></label>
+                <input asp-for="TotalPrice" class="form-control" />
+                <span asp-validation-for="TotalPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+
+	<script type="text/javascript">
+function add_chatinline() { var hccid = 92588902; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }
+	add_chatinline(); </script>
+
+
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

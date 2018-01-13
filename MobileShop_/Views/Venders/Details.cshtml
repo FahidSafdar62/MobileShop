@@ -1,0 +1,30 @@
+﻿@model MobileShop_.Models.Vender
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vender</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vname)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Vname)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Vmobile)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Vmobile)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Vid">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

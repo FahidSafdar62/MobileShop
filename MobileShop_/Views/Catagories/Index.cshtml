@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MobileShop_.Models.Catagory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table" id="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CatagoryName)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatagoryName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.CatagoryId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.CatagoryId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CatagoryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts {
+<script>
+
+		$(document).ready(function () {
+			$('#table').DataTable();
+		});
+</script>
+	<script type="text/javascript">
+function add_chatinline() { var hccid = 92588902; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }
+	add_chatinline(); </script>
+}
