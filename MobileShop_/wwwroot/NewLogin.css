@@ -2,7 +2,7 @@
     margin : 0px;
     padding : 0px;
     background : url('images/office-620817.jpg');
-    background-size : cover;
+    background-size : auto;
     background-position : center;
     font-family : sans-serif;
 }
