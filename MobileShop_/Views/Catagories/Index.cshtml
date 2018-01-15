@@ -22,7 +22,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CatagoryName)
+                @Html.DisplayFor(modelItem => item.CatagoryName)<span class="catCount badge pull-right" data-id="@item.CatagoryId">3</span>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CatagoryId">Edit</a> |
@@ -38,6 +38,30 @@
 
 		$(document).ready(function () {
 			$('#table').DataTable();
+			$('.catCount').each(function () {
+				test
+				var sp = $(this);
+
+				$.ajax({
+					before: function () { },
+
+					url: '/Catagories/CategoryCountAjax',
+					type: 'GET',
+					data: {
+						CategoryCode: sp.data('id')
+
+					},
+					success: function (result) {
+
+						sp.text(result);
+						$(this).load()
+					},
+					error: function () { },
+					after: function () { }
+				});
+
+			});
+		});
 		});
 </script>
 	<script type="text/javascript">

@@ -43,7 +43,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ItemsName)
+                @Html.DisplayFor(modelItem => item.ItemsName)<span class="outStock badge bg-danger " data-id="@item.ItemsId"></span> <span class="saleCount text-success pull-right" data-id="@item.ItemsId">3</span>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -80,7 +80,55 @@
 
 		$(document).ready(function () {
 			$('#table').DataTable();
+			$('.saleCount').each(function () {
+				//test
+				var sp = $(this);
+
+				$.ajax({
+					before: function () { },
+
+					url: '/Items/ProductSaleCountAjax',
+					type: 'GET',
+					data: {
+						ProductCode: sp.data('id')
+
+					},
+					success: function (result) {
+
+						sp.text("(" + result + " Sold)");
+						//$(this).load()
+					},
+					error: function () { },
+					after: function () { }
+				});
+
+			});
+
+			$('.outStock').each(function () {
+				//test
+				var st = $(this);
+
+				$.ajax({
+					before: function () { },
+
+					url: '/Items/ProductOutOfStockCheck',
+					type: 'GET',
+					data: {
+						ProductCode: st.data('id')
+
+					},
+					success: function (result) {
+
+						st.text(result);
+						//$(this).load()
+					},
+					error: function () { },
+					after: function () { }
+				});
+
+			});
 		});
+	
 </script>
 	<script type="text/javascript">
 function add_chatinline() { var hccid = 92588902; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }

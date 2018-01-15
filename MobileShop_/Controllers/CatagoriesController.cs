@@ -148,5 +148,9 @@ namespace MobileShop_.Controllers
         {
             return _context.Catagory.Any(e => e.CatagoryId == id);
         }
-    }
+		public int CategoryCountAjax(int CategoryCode)
+		{
+			return _context.Catagory.Where(p => p.CatagoryId == CategoryCode).Count();
+		}
+	}
 }
