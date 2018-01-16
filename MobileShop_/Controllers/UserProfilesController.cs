@@ -9,52 +9,52 @@ using MobileShop_.Models;
 
 namespace MobileShop_.Controllers
 {
-    public class UserProfilesController : Controller
-    {
-        private readonly MobileContext _context;
+	public class UserProfilesController : Controller
+	{
+		private readonly MobileContext _context;
 
-        public UserProfilesController(MobileContext context)
-        {
-            _context = context;
-        }
+		public UserProfilesController(MobileContext context)
+		{
+			_context = context;
+		}
 
-        // GET: UserProfiles
-        public async Task<IActionResult> Index()
-        {
-            return View(await _context.UserProfile.ToListAsync());
-        }
+		// GET: UserProfiles
+		public async Task<IActionResult> Index()
+		{
+			return View(await _context.UserProfile.ToListAsync());
+		}
 
-        // GET: UserProfiles/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		// GET: UserProfiles/Details/5
+		public async Task<IActionResult> Details(int? id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            var userProfile = await _context.UserProfile
-                .SingleOrDefaultAsync(m => m.UserId == id);
-            if (userProfile == null)
-            {
-                return NotFound();
-            }
+			var userProfile = await _context.UserProfile
+				.SingleOrDefaultAsync(m => m.UserId == id);
+			if (userProfile == null)
+			{
+				return NotFound();
+			}
 
-            return View(userProfile);
-        }
+			return View(userProfile);
+		}
 
-        // GET: UserProfiles/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+		// GET: UserProfiles/Create
+		public IActionResult Create()
+		{
+			return View();
+		}
 
-        // POST: UserProfiles/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Create(UserProfile obj)
-        {
+		// POST: UserProfiles/Create
+		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public IActionResult Create(UserProfile obj)
+		{
 			_context.UserProfile.Add(obj);
 			_context.SaveChanges();
 			return RedirectToAction("Index");
@@ -72,84 +72,84 @@ namespace MobileShop_.Controllers
 			{
 				return NotFound();
 			}
-			
+
 			return View(UserProfiles);
 		}
 		// POST: UserProfiles/Edit/5
 		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,Password,UserRole")] UserProfile userProfile)
-        {
-            if (id != userProfile.UserId)
-            {
-                return NotFound();
-            }
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> Edit(int id, [Bind("UserId,UserName,Password,UserRole")] UserProfile userProfile)
+		{
+			if (id != userProfile.UserId)
+			{
+				return NotFound();
+			}
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(userProfile);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!UserProfileExists(userProfile.UserId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(userProfile);
-        }
+			if (ModelState.IsValid)
+			{
+				try
+				{
+					_context.Update(userProfile);
+					await _context.SaveChangesAsync();
+				}
+				catch (DbUpdateConcurrencyException)
+				{
+					if (!UserProfileExists(userProfile.UserId))
+					{
+						return NotFound();
+					}
+					else
+					{
+						throw;
+					}
+				}
+				return RedirectToAction(nameof(Index));
+			}
+			return View(userProfile);
+		}
 
-        // GET: UserProfiles/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
+		// GET: UserProfiles/Delete/5
+		public async Task<IActionResult> Delete(int? id)
+		{
+			if (id == null)
+			{
+				return NotFound();
+			}
 
-            var userProfile = await _context.UserProfile
-                .SingleOrDefaultAsync(m => m.UserId == id);
-            if (userProfile == null)
-            {
-                return NotFound();
-            }
+			var userProfile = await _context.UserProfile
+				.SingleOrDefaultAsync(m => m.UserId == id);
+			if (userProfile == null)
+			{
+				return NotFound();
+			}
 
-            return View(userProfile);
-        }
+			return View(userProfile);
+		}
 
-        // POST: UserProfiles/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var userProfile = await _context.UserProfile.SingleOrDefaultAsync(m => m.UserId == id);
-            _context.UserProfile.Remove(userProfile);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
+		// POST: UserProfiles/Delete/5
+		[HttpPost, ActionName("Delete")]
+		[ValidateAntiForgeryToken]
+		public async Task<IActionResult> DeleteConfirmed(int id)
+		{
+			var userProfile = await _context.UserProfile.SingleOrDefaultAsync(m => m.UserId == id);
+			_context.UserProfile.Remove(userProfile);
+			await _context.SaveChangesAsync();
+			return RedirectToAction(nameof(Index));
+		}
 
-        private bool UserProfileExists(int id)
-        {
-            return _context.UserProfile.Any(e => e.UserId == id);
-        }
+		private bool UserProfileExists(int id)
+		{
+			return _context.UserProfile.Any(e => e.UserId == id);
+		}
 		public IActionResult Dasboard()
 		{
 			return View();
 		}
 		public int CatagoryCount()
 		{
-			return _context.Catagory.ToList<Catagory>().Count;
+			return _context.Catagory.ToList<Catagory>().Count();
 
 		}
 		public int ItemsCount()
@@ -196,16 +196,16 @@ namespace MobileShop_.Controllers
 			}
 
 		}
-		
+
 		public IActionResult NewLogin()
 		{
 			return View();
 		}
-		
-		public IActionResult NewLoginByFahid(string username, string password )
+
+		public IActionResult NewLoginByFahid(string username, string password)
 		{
 			UserProfile obj = _context.UserProfile.Where(abc => abc.UserName == username).FirstOrDefault<UserProfile>();
-			if(obj.Password == password)
+			if (obj.Password == password)
 			{
 				return RedirectToAction("Dasboard");
 			}
@@ -213,7 +213,140 @@ namespace MobileShop_.Controllers
 			{
 				return View();
 			}
-			
+
+		}
+		public int CategoryAdded()
+		{
+			try
+			{
+				int? dNumber = _context.Catagory.Where(db => db.Date >= DateTime.Now.AddDays(-3)).Count();
+				return (int)dNumber;
+			}
+			catch
+			{
+				return 0;
+			}
+
+		}
+		public string LastAddedCategory()
+		{
+			try
+			{
+				int? dNumber = _context.Catagory.Where(db => db.Date >= DateTime.Now.AddDays(-3)).Max(u => (int?)u.CatagoryId);
+				Catagory catName = _context.Catagory.Where(db => db.CatagoryId == (int)dNumber).SingleOrDefault();
+				return catName.CatagoryName;
+			}
+			catch
+			{
+				return "Nill";
+			}
+
+
+		}
+		public int CategoryWithoutItem()
+		{
+			return _context.Purchase.Count();
+
+		}
+		public int ProductAdded()
+		{
+			return _context.Purchase.Count();
+
+		}
+
+		public int LastAddedProduct()
+		{
+			return _context.Purchase.Count();
+
+		}
+
+		public int MostExpensiveProduct()
+		{
+			return _context.Purchase.Count();
+
+		}
+		public int TotalNoOfSales()
+		{
+			try
+			{
+				int? dNumber = _context.Sales.Where(db => db.TrDate >= DateTime.Now.AddDays(-3)).Count();
+				return (int)dNumber;
+			}
+			catch
+			{
+				return 0;
+			}
+
+		}
+
+		public int MaximumSingleSale()
+		{
+			try
+			{
+				int? dNumber = _context.Sales.Where(db => db.TrDate >= DateTime.Now.AddDays(-3)).Max(u => (int?)u.TotalPrice);
+				return (int)dNumber;
+			}
+			catch
+			{
+				return 0;
+			}
+
+		}
+
+		public int MinimumSingleSale()
+		{
+			try
+			{
+				int? dNumber = _context.Sales.Where(db => db.TrDate >= DateTime.Now.AddDays(-3)).Min(u => (int?)u.TotalPrice);
+				return (int)dNumber;
+			}
+			catch
+			{
+				return 0;
+			}
+
+		}
+		public int TotalNoOfPurchases()
+		{
+			try
+			{
+				int? dNumber = _context.Purchase.Where(db => db.Date >= DateTime.Now.AddDays(-3)).Count();
+				return (int)dNumber;
+			}
+			catch
+			{
+				return 0;
+			}
+
+		}
+
+		public int MinimumSinglePurchase()
+		{
+			try
+			{
+				int? dNumber = _context.Purchase.Where(db => db.Date >= DateTime.Now.AddDays(-3)).Min(u => (int?)u.TotalPrice);
+				return (int)dNumber;
+			}
+			catch
+			{
+				return 0;
+			}
+
+		}
+
+		public int MaximumSinglePurchase()
+		{
+			try
+			{
+				int? dNumber = _context.Purchase.Where(db => db.Date >= DateTime.Now.AddDays(-3)).Max(u => (int?)u.TotalPrice);
+				return (int)dNumber;
+			}
+			catch
+			{
+				return 0;
+			}
+
 		}
 	}
+
 }

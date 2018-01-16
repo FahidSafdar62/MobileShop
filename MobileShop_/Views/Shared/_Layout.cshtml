@@ -9,6 +9,8 @@
 		<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
 		<link href="~/datatable/jquery.dataTables.min.css" rel="stylesheet" />
 		<link href="~/JQuaryUI/jquery-ui.css" rel="stylesheet" />
+
+		<link href="~/datatable/buttons.dataTables.min.css" rel="stylesheet" />
 		
 		<link href="~/light-bootstrap-dashboard-master/assets/css/animate.min.css" rel="stylesheet" />
 		<link href="~/light-bootstrap-dashboard-master/assets/css/demo.css" rel="stylesheet" />
@@ -110,51 +112,18 @@
 		@RenderBody()
 		<hr />
 	
-		<footer>
-			<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
-			<div class="container">
-				<div class="row">
-					<!-- Button trigger modal -->
-					<button class="btn btn-primary btn-lg" title="Share this content" data-toggle="modal" data-target="#myModal">
-						<i class="fa fa-share-alt"></i> Share
-					</button>
-					<!-- Modal -->
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-									<h4 class="modal-title" id="myModalLabel"><i class="fa fa-share-alt"></i> Share</h4>
-								</div>
-								<div class="modal-body">
-									<p><a title="Facebook" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-facebook fa-stack-1x"></i></span></a> <a title="Twitter" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-twitter fa-stack-1x"></i></span></a> <a title="Google+" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-google-plus fa-stack-1x"></i></span></a> <a title="Linkedin" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-linkedin fa-stack-1x"></i></span></a> <a title="Reddit" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-reddit fa-stack-1x"></i></span></a> <a title="WordPress" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-wordpress fa-stack-1x"></i></span></a> <a title="Digg" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-digg fa-stack-1x"></i></span></a>  <a title="Stumbleupon" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-stumbleupon fa-stack-1x"></i></span></a><a title="E-mail" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-envelope fa-stack-1x"></i></span></a>  <a title="Print" href=""><span class="fa-stack fa-lg"><i class="fa fa-square-o fa-stack-2x"></i><i class="fa fa-print fa-stack-1x"></i></span></a></p>
+		<div class="col-md-12 text-center bg-primary navbar-fixed-bottom btn-default">
+			<footer>
 
-									<h2><i class="fa fa-envelope"></i> Newsletter</h2>
+				<p>Final Assessment Task Assigned by <a class="text-warning" href="http://thetasolutions.co.uk/" target="_blank">Theta Solutions</a> and fully completed by <a class="text-warning" target="_blank" href="http:Fahidsafdar.me/">Fahid Safdar</a> <br /> (Sep 2017 Batch, ASP.NET CORE MVC6)</p>
+			</footer>
+		</div>
 
-									<p>Subscribe to our weekly Newsletter and stay tuned.</p>
-
-									<form action="" method="post">
-										<div class="input-group">
-											<span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-											<input type="email" class="form-control" placeholder="your@email.com">
-										</div>
-										<br />
-										<button type="submit" value="sub" name="sub" class="btn btn-primary"><i class="fa fa-share"></i> Subscribe Now!</button>
-									</form>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</footer>
 	</div>
 
 	<environment include="Development">
+		<script src="~/datatable/buttons.print.min.js"></script>
+		<script src="~/datatable/jquery-1.12.4.js"></script>
 		<script src="~/lib/jquery/dist/jquery.js"></script>
 		<script src="~/datatable/jquery.dataTables.min.js"></script>
 		<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

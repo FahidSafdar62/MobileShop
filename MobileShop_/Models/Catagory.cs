@@ -12,7 +12,8 @@ namespace MobileShop_.Models
 
         public int CatagoryId { get; set; }
         public string CatagoryName { get; set; }
+		public DateTime Date { get; set; }
 
-        public ICollection<Items> Items { get; set; }
+		public ICollection<Items> Items { get; set; }
     }
 }

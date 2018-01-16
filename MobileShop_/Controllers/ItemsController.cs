@@ -187,7 +187,7 @@ namespace MobileShop_.Controllers
 
 		public int ProductSaleCountAjax(int ItemsCode)
 		{
-			return _context.Items.Where(p => p.ItemsId == ItemsCode).Count();
+			return _context.Sales.Where(p => p.ItemsId == ItemsCode).Count();
 		}
 
 		public string ProductOutOfStockCheck(int ItemsCode)

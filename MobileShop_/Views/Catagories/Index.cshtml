@@ -9,7 +9,9 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table" id="table">
+<button id="btnPrint">Custom Print Button</button>
+<br>
+<table class="table" id="table" >
     <thead>
         <tr>
                 <th>
@@ -22,7 +24,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CatagoryName)<span class="catCount badge pull-right" data-id="@item.CatagoryId">3</span>
+                @Html.DisplayFor(modelItem => item.CatagoryName)<span class="catCount badge pull-right" data-id="@item.CatagoryId"></span>
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CatagoryId">Edit</a> |
@@ -38,8 +40,11 @@
 
 		$(document).ready(function () {
 			$('#table').DataTable();
+			$(document).on('click', '#btnPrint', function () {
+				$(".buttons-print")[0].click(); //trigger the click event
+			});
 			$('.catCount').each(function () {
-				test
+				
 				var sp = $(this);
 
 				$.ajax({
@@ -54,15 +59,16 @@
 					success: function (result) {
 
 						sp.text(result);
-						$(this).load()
+						//$(this).load()
 					},
 					error: function () { },
 					after: function () { }
 				});
 
 			});
-		});
-		});
+	});
+	
+		
 </script>
 	<script type="text/javascript">
 function add_chatinline() { var hccid = 92588902; var nt = document.createElement("script"); nt.async = true; nt.src = "https://mylivechat.com/chatinline.aspx?hccid=" + hccid; var ct = document.getElementsByTagName("script")[0]; ct.parentNode.insertBefore(nt, ct); }

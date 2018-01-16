@@ -9,6 +9,8 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<button onclick='window.print'>print</button>
+
 <table class="table" id="table">
     <thead>
         <tr>
@@ -43,13 +45,13 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ItemsName)<span class="outStock badge bg-danger " data-id="@item.ItemsId"></span> <span class="saleCount text-success pull-right" data-id="@item.ItemsId">3</span>
+                @Html.DisplayFor(modelItem => item.ItemsName) <span class="outStock badge" data-id="@item.ItemsId"> </span>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
+                @Html.DisplayFor(modelItem => item.Quantity)<span class="saleCount text-success pull-right badge" data-id="@item.ItemsId"></span>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
@@ -78,6 +80,7 @@
 @section Scripts {
 <script>
 
+
 		$(document).ready(function () {
 			$('#table').DataTable();
 			$('.saleCount').each(function () {
@@ -90,7 +93,7 @@
 					url: '/Items/ProductSaleCountAjax',
 					type: 'GET',
 					data: {
-						ProductCode: sp.data('id')
+						ItemsCode: sp.data('id')
 
 					},
 					success: function (result) {
@@ -114,7 +117,7 @@
 					url: '/Items/ProductOutOfStockCheck',
 					type: 'GET',
 					data: {
-						ProductCode: st.data('id')
+						ItemsCode: st.data('id')
 
 					},
 					success: function (result) {
@@ -126,6 +129,14 @@
 					after: function () { }
 				});
 
+			});
+	});
+		$(document).ready(function () {
+			$('#print').DataTable({
+				dom: 'Bfrtip',
+				buttons: [
+					'print'
+				]
 			});
 		});
 	

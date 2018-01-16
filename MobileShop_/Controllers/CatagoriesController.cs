@@ -53,16 +53,19 @@ namespace MobileShop_.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CatagoryId,CatagoryName")] Catagory catagory)
+        public async Task<IActionResult> Create([Bind("CatagoryId,CatagoryName")] Catagory catagory )
         {
-            if (ModelState.IsValid)
+			catagory.Date = DateTime.Today.Date;
+			if (ModelState.IsValid)
             {
                 _context.Add(catagory);
+				
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(catagory);
         }
+
 
         // GET: Catagories/Edit/5
         public async Task<IActionResult> Edit(int? id)

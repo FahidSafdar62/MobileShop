@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MobileShop_.Models;
+using System.Net.Mail;
 
 namespace MobileShop_.Controllers
 {
@@ -63,6 +64,7 @@ namespace MobileShop_.Controllers
 			Items oitem = _context.Items.Where(abc => abc.ItemsId == Convert.ToInt32(sales.ItemsId)).FirstOrDefault<Items>();
 			int a = Convert.ToInt32(oitem.Quantity) - Convert.ToInt32(sales.Quantity);
 			oitem.Quantity = a;
+			sendMail(sales);
 			_context.Items.Update(oitem);
 			if (ModelState.IsValid)
             {
@@ -165,5 +167,33 @@ namespace MobileShop_.Controllers
         {
             return _context.Sales.Any(e => e.SalesId == id);
         }
-    }
+		public void sendMail(Sales Obj)
+		{
+			try
+			{
+				//Customer customer = _context.Customer.Where(m => m.== Obj.CustomerId).FirstOrDefault<Customer>();
+				//setting up Mail Message
+				MailMessage oMail = new MailMessage();
+				oMail.Subject = "Sales Notification";
+				oMail.Body = "Dear Customer,<br><br> you have bought " + Obj.ItemsId + " with worth of " + Obj.TotalPrice + "." +
+					"I hope you will enjoy this " + Obj.ItemsId + ".For Any Complaint and Suggestion Please Contact with YourSelf ";
+				oMail.IsBodyHtml = true;
+				oMail.To.Add(new MailAddress("Fahidsafdar@gmail.com"));
+				oMail.From = new MailAddress("Fahidbatthbatth@gmail.com", "MobileShop");
+				//setting up SMTP Client
+				SmtpClient oSmtp = new SmtpClient();
+				oSmtp.Port = 587;
+				oSmtp.EnableSsl = true;
+				oSmtp.Host = "smtp.gmail.com";
+				//Giving Creditientails to Mails
+				oSmtp.Credentials = new System.Net.NetworkCredential("Fahidbatthbatth@gmail.com", "zahid62620");
+				oSmtp.Send(oMail);
+
+			}
+			catch (Exception ex)
+			{
+
+			}
+		}
+	}
 }
