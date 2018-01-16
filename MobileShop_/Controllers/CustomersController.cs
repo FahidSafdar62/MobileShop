@@ -55,7 +55,8 @@ namespace MobileShop_.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,CustomerName,CustomerNo")] Customer customer)
         {
-            if (ModelState.IsValid)
+			customer.Date= DateTime.Now.Date;
+			if (ModelState.IsValid)
             {
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
@@ -148,5 +149,16 @@ namespace MobileShop_.Controllers
         {
             return _context.Customer.Any(e => e.CustomerId == id);
         }
-    }
+		public string CustomerStar(int CustomerCode)
+		{
+			Sales pd = _context.Sales.Where(p => p.CustomerId == CustomerCode && p.TrDate >= DateTime.Now.AddDays(-30)).SingleOrDefault();
+
+			if (pd != null)
+			{
+				return "star";
+			}
+			else
+				return "";
+		}
+	}
 }

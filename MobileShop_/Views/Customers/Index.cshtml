@@ -25,7 +25,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerName)
+				<span class="star text-warning" data-id="@item.CustomerId"></span>  @Html.DisplayFor(modelItem => item.CustomerName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CustomerNo)
@@ -44,6 +44,34 @@
 
 		$(document).ready(function () {
 			$('#table').DataTable();
+			$('.star').each(function () {
+				//test
+				var sp = $(this);
+
+				$.ajax({
+					before: function () { },
+
+					url: '/Customers/CustomerStar',
+					type: 'GET',
+					data: {
+						CustomerCode: sp.data('id')
+
+					},
+					success: function (result) {
+
+						if (result == "star") {
+
+							sp.addClass("glyphicon glyphicon-star-empty");
+
+						}
+
+						//$(this).load()
+					},
+					error: function () { },
+					after: function () { }
+				});
+
+			});
 		});
 </script>
 	<script type="text/javascript">

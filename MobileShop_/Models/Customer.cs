@@ -13,7 +13,8 @@ namespace MobileShop_.Models
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
         public string CustomerNo { get; set; }
+		public DateTime Date { get; set; }
 
-        public ICollection<Sales> Sales { get; set; }
+		public ICollection<Sales> Sales { get; set; }
     }
 }
