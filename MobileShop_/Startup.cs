@@ -63,7 +63,7 @@ namespace MobileShop_
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=UserProfiles}/{action=checklogin}/{id?}");
+                    template: "{controller=UserProfiles}/{action=NewLogin}/{id?}");
             });
         }
     }
