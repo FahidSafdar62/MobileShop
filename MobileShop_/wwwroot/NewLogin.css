@@ -1,10 +1,11 @@
 ﻿body {
-    margin : 0px;
-    padding : 0px;
-    background : url('images/office-620817.jpg');
-    background-size :  cover;
-    background-position : center;
-    font-family : sans-serif;
+	margin: 0px;
+	padding: 0px;
+	
+	background-image: url('slidere/img/background-3048816_1280.jpg');
+	background-size: unset;
+	background-position: ;
+	font-family: sans-serif;
 }
 .login-box{
     width : 400px;
@@ -16,7 +17,7 @@
     position:absolute;
     transform:translate(-50px , -50px);
     box-sizing:border-box;
-    padding:50px 50px;
+    padding:60px 40px;
 }
 .Myglipicon{
     height:100px;
